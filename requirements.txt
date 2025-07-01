@@ -6,4 +6,4 @@ xlrd==2.0.1
 python-dateutil==2.8.2
 numpy==1.24.3
 et-xmlfile==1.1.0
-Pillow==10.0.0 
+Pillow==10.0.0
