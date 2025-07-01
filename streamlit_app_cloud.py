@@ -17,9 +17,6 @@ import tempfile
 import os
 import subprocess
 import sys
-import pdfplumber
-import xlrd
-import openpyxl
 
 # Force install required packages if not available
 def install_package(package):
@@ -34,6 +31,34 @@ def install_package(package):
         except:
             return False
 
+# Try to install and import Excel libraries
+if not install_package("openpyxl"):
+    st.error("Failed to install openpyxl. Please check your requirements.txt file.")
+
+if not install_package("xlrd"):
+    st.error("Failed to install xlrd. Please check your requirements.txt file.")
+
+# Try to import pdfplumber, fallback to alternative if not available
+try:
+    import pdfplumber
+    PDFPLUMBER_AVAILABLE = True
+except ImportError:
+    PDFPLUMBER_AVAILABLE = False
+
+# Try to import Excel reading libraries
+try:
+    import openpyxl
+    OPENPYXL_AVAILABLE = True
+except ImportError:
+    OPENPYXL_AVAILABLE = False
+    st.error("openpyxl is not available. Please ensure it's in your requirements.txt file.")
+
+try:
+    import xlrd
+    XLRD_AVAILABLE = True
+except ImportError:
+    XLRD_AVAILABLE = False
+    st.error("xlrd is not available. Please ensure it's in your requirements.txt file.")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
