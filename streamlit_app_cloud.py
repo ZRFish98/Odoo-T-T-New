@@ -33,10 +33,10 @@ def install_package(package):
 
 # Try to install and import Excel libraries
 if not install_package("openpyxl"):
-    st.error("Failed to install openpyxl. Please check your requirements file.")
+    st.error("Failed to install openpyxl. Please check your requirements.txt file.")
 
 if not install_package("xlrd"):
-    st.error("Failed to install xlrd. Please check your requirements file.")
+    st.error("Failed to install xlrd. Please check your requirements.txt file.")
 
 # Try to import pdfplumber, fallback to alternative if not available
 try:
